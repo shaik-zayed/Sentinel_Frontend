@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+    /* ink — neutral surfaces & text, cool blue-black */
+    --color-ink-50: #F4F7F8;
+    --color-ink-100: #E6EBED;
+    --color-ink-200: #D1D9DC;
+    --color-ink-300: #A8B4B9;
+    --color-ink-400: #798890;
+    --color-ink-500: #586870;
+    --color-ink-600: #415059;
+    --color-ink-700: #2D3941;
+    --color-ink-800: #1C262D;
+    --color-ink-900: #131B20;
+    --color-ink-950: #090D10;
+
+    /* copper — brand / primary action, like a brushed-metal signal lamp */
+    --color-copper-200: #F1D8AC;
+    --color-copper-300: #E6BD7C;
+    --color-copper-400: #DBA354;
+    --color-copper-500: #A66B22;
+    --color-copper-600: #8A5419;
+    --color-copper-700: #6B3F13;
+    --color-copper-800: #4C2D0E;
+    --color-copper-900: #301D09;
+    --color-copper-950: #1C1206;
+
+    /* gold — premium highlight / emphasis */
+    --color-gold-200: #FFF0B3;
+    --color-gold-300: #FFE082;
+    --color-gold-400: #FFD54F;
+    --color-gold-500: #D4AF37; /* classic metallic gold */
+    --color-gold-600: #B8941F;
+    --color-gold-700: #8C6E14;
+    --color-gold-800: #624C0D;
+    --color-gold-900: #3D3008;
+
+    /* live — actively running scan, cool cyan */
+    --color-live-400: #4DD6C7;
+    --color-live-800: #1B5650;
+    --color-live-900: #102E2A;
+
+    /* finished — muted sage (replaces stock emerald) */
+    --color-emerald-300: #A9D6BC;
+    --color-emerald-400: #69B98E;
+    --color-emerald-800: #2A5640;
+    --color-emerald-900: #1A382A;
+    --color-emerald-950: #102218;
+
+    /* failed — muted brick (replaces stock red) */
+    --color-red-300: #E6B2A8;
+    --color-red-400: #D17A68;
+    --color-red-600: #9C4634;
+    --color-red-800: #642A21;
+    --color-red-900: #401B16;
+    --color-red-950: #270F0C;
+
+    /* queued — muted mustard (replaces stock amber) */
+    --color-amber-300: #E5D08F;
+    --color-amber-400: #CDAE52;
+    --color-amber-800: #5F4B22;
+    --color-amber-900: #3D3115;
+    --color-amber-950: #251D0D;
+
+    /*--font-display: "Space Grotesk", "Arial Narrow", sans-serif;*/
+    /*--font-sans: "IBM Plex Sans", system-ui, sans-serif;*/
+    /*--font-mono: "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace;*/
+}
+
+/* Dark scrollbars tuned to the ink scale */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #131B20;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2D3941;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #415059;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #2D3941 #131B20;
+}

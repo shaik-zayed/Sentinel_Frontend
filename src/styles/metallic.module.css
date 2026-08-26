@@ -1,0 +1,159 @@
+/* src/styles/metallic.module.css
+   Reusable metallic surface for anything currently using a SOLID
+   copper/gold fill (buttons, icon badges, logo marks). This module
+   only owns background layers, border, shadow, and interactive state —
+   your existing padding/border-radius/font-size utility classes still
+   control layout, so it drops into any element without a fight.
+   Colors read from index.css's @theme block (copper/gold/ink scales). */
+
+.metal {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border: 1px solid var(--color-copper-950);
+    color: var(--color-copper-950);
+    text-shadow:
+            0 1px 0 color-mix(in srgb, var(--color-copper-200) 55%, transparent),
+            0 -1px 1px color-mix(in srgb, var(--color-copper-950) 45%, transparent);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    box-shadow:
+            inset 0 0 0 1px color-mix(in srgb, var(--color-copper-200) 12%, transparent),
+            inset 0 1px 3px color-mix(in srgb, var(--color-copper-200) 15%, transparent),
+            inset 0 -6px 10px color-mix(in srgb, var(--color-copper-950) 55%, transparent),
+            0 10px 18px -8px color-mix(in srgb, var(--color-copper-950) 70%, transparent),
+            0 2px 3px color-mix(in srgb, var(--color-ink-950) 50%, transparent);
+}
+.metal:hover { transform: translateY(-1px); }
+.metal:active {
+    transform: translateY(1px);
+    box-shadow:
+            inset 0 3px 6px color-mix(in srgb, var(--color-copper-950) 70%, transparent),
+            inset 0 -1px 2px color-mix(in srgb, var(--color-copper-200) 20%, transparent),
+            0 2px 4px color-mix(in srgb, var(--color-copper-950) 50%, transparent);
+}
+.metal:focus-visible {
+    outline: 2px solid var(--color-copper-300);
+    outline-offset: 3px;
+}
+.metal:disabled,
+.metal[aria-disabled="true"] {
+    cursor: not-allowed;
+    filter: grayscale(0.55) brightness(0.75);
+    transform: none;
+}
+
+/* gold reads text/border darker-on-light the same way copper does — swap with the `metalGold` class alongside `metal` */
+.metalGold {
+    border-color: var(--color-gold-800);
+    color: var(--color-gold-900);
+    text-shadow:
+            0 1px 0 color-mix(in srgb, var(--color-gold-200) 55%, transparent),
+            0 -1px 1px color-mix(in srgb, var(--color-gold-900) 45%, transparent);
+}
+
+/* ---- layer 1: angular gradient, the actual "metal" ---- */
+.facetsCopper, .facetsGold {
+    position: absolute;
+    inset: -140%;
+    filter: blur(9px) brightness(1.0) saturate(1.2);
+    z-index: 0;
+    transition: filter 0.12s ease;
+}
+.metal:hover .facetsCopper,
+.metal:hover .facetsGold {
+    filter: blur(9px) brightness(1.08) saturate(1.28);
+}
+.facetsCopper {
+    background: conic-gradient(
+            from 205deg at 50% 145%,
+            var(--color-copper-950) 0deg, var(--color-copper-700) 25deg, var(--color-copper-300) 48deg,
+            var(--color-copper-800) 70deg, var(--color-copper-950) 95deg, var(--color-copper-600) 120deg,
+            var(--color-copper-300) 145deg, var(--color-copper-700) 170deg, var(--color-copper-950) 195deg,
+            var(--color-copper-700) 220deg, var(--color-copper-300) 245deg, var(--color-copper-600) 270deg,
+            var(--color-copper-950) 300deg, var(--color-copper-600) 330deg, var(--color-copper-950) 360deg
+    );
+}
+.facetsGold {
+    background: conic-gradient(
+            from 205deg at 50% 145%,
+            var(--color-gold-900) 0deg, var(--color-gold-600) 25deg, var(--color-gold-300) 48deg,
+            var(--color-gold-800) 70deg, var(--color-gold-900) 95deg, var(--color-gold-500) 120deg,
+            var(--color-gold-300) 145deg, var(--color-gold-600) 170deg, var(--color-gold-900) 195deg,
+            var(--color-gold-600) 220deg, var(--color-gold-300) 245deg, var(--color-gold-500) 270deg,
+            var(--color-gold-900) 300deg, var(--color-gold-500) 330deg, var(--color-gold-900) 360deg
+    );
+}
+
+/* ---- layer 2: specular streak, layer 3: brushed grain ---- */
+.glossy {
+    position: absolute; top: -30%; right: -8%; width: 32%; height: 170%;
+    background: linear-gradient(to left, color-mix(in srgb, var(--color-copper-200) 35%, white 65%), transparent 65%);
+    transform-origin: top right; transform: rotate(28deg);
+    mix-blend-mode: soft-light; opacity: 0.7; z-index: 1; pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.metal:hover .glossy {
+    opacity: 0.95;
+    transform: rotate(28deg) translateX(-12%);
+}
+.grain {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(100deg, rgba(255,255,255,0.09) 0px, rgba(255,255,255,0.09) 1px, transparent 1px, transparent 3px);
+    mix-blend-mode: overlay; opacity: 0.3; z-index: 2; pointer-events: none;
+}
+
+/* ---- layer 4: real content, never blurred ---- */
+.content {
+    position: relative; z-index: 3;
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
+}
+
+/* ---- metallic TEXT ----
+   Text can't use the blur/facet layers (blurring text makes it unreadable),
+   so this is a different technique: a multi-stop gradient clipped to the
+   glyph shapes. Same "many light/dark bands, not one smooth fade" principle
+   as the surfaces above — a plain 2-stop gradient reads as "colored text,"
+   several alternating stops reads as "shimmering metal." */
+.textShine {
+    background: linear-gradient(
+            95deg,
+            var(--color-copper-600) 0%,
+            var(--color-copper-300) 15%,
+            var(--color-copper-500) 30%,
+            var(--color-gold-300) 45%,
+            var(--color-gold-500) 60%,
+            var(--color-gold-300) 75%,
+            var(--color-copper-400) 90%,
+            var(--color-copper-600) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+.textShineCopper {
+    background: linear-gradient(
+            95deg,
+            var(--color-copper-700) 0%, var(--color-copper-300) 20%, var(--color-copper-600) 40%,
+            var(--color-copper-200) 60%, var(--color-copper-500) 80%, var(--color-copper-700) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ---- compact modifier: for icon badges / logo marks under ~48px ----
+   A 9px blur that looks great on a 200px button turns into mush on a
+   24px square, so small solid-fill elements (logo marks, step number
+   badges, feature icons) get a lighter touch. Add alongside .metal. */
+.compact .facetsCopper,
+.compact .facetsGold {
+    inset: -60%;
+    filter: blur(3px) brightness(1.12) saturate(1.05);
+}
+.compact .glossy {
+    top: -40%; right: -10%; width: 55%; height: 260%;
+    opacity: 0.5;
+}
+.compact .grain { opacity: 0.2; }
