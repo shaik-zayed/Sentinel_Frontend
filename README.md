@@ -245,8 +245,8 @@ http://localhost:7777
 Clone the repository:
 
 ```bash
-git clone <YOUR-FRONTEND-REPOSITORY>
-cd <YOUR-FRONTEND-REPOSITORY>
+git clone https://github.com/shaik-zayed/Sentinel_Frontend.git
+cd Sentinel_Frontend
 ```
 
 Install dependencies:
@@ -285,22 +285,6 @@ Vite will provide a local development URL, typically:
 
 ```text
 http://localhost:5173
-```
-
----
-
-## 🏭 Production Build
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-Preview the production build locally:
-
-```bash
-npm run preview
 ```
 
 ---
@@ -475,7 +459,6 @@ Example:
 
 Potential future improvements:
 
-- [ ] Live scan progress updates using WebSockets/SSE
 - [ ] Advanced vulnerability filtering
 - [ ] CVSS-based severity dashboards
 - [ ] Scan comparison
@@ -492,24 +475,11 @@ Potential future improvements:
 
 ---
 
-## 📄 License
-
-Add your chosen license here.
-
-For example:
-
-```text
-MIT License
-```
-
----
-
 ## 👨‍💻 Author
 
 **Shaik Zayed**
 
-GitHub:  
-https://github.com/shaik-zayed
+GitHub: https://github.com/shaik-zayed
 
 ---
 
