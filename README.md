@@ -434,9 +434,7 @@ Report generation
 
 ## 📸 Screenshots
 
-Add screenshots here once the UI is deployed.
-
-Suggested screenshots:
+![Sentinel Demo](src/assets/Sentinel.gif)
 
 - Landing page
 - Login
@@ -446,12 +444,6 @@ Suggested screenshots:
 - Vulnerability Findings
 - Reports
 - User Profile
-
-Example:
-
-```markdown
-![Sentinel Dashboard](docs/screenshots/dashboard.png)
-```
 
 ---
 
