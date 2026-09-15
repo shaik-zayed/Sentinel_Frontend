@@ -11,6 +11,7 @@ The backend is maintained separately:
 **Backend:** https://github.com/shaik-zayed/Sentinel
 
 ---
+![Sentinel Demo](src/assets/Sentinel.gif)
 
 ## ✨ Features
 
@@ -434,17 +435,33 @@ Report generation
 
 ## 📸 Screenshots
 
-![Sentinel Demo](src/assets/Sentinel.gif)
+- **Login**
+![2_login](src/assets/2_login.png)
+---
 
-- Landing page
-- Login
-- Dashboard
-- New Scan
-- Scan Results
-- Vulnerability Findings
-- Reports
-- User Profile
+- **Dashboard**
+![3_dashboard](src/assets/3_dashboard.png)
+---
 
+- **New Scan**
+![4_new_scan](src/assets/4_new_scan.png)
+---
+
+- **Scan Results**
+![5_raw_scan_output](src/assets/5_raw_scan_output.png)
+---
+
+- **Reports Page**
+![6_reports_page](src/assets/6_reports_page.png)
+---
+
+- **User Profile**
+![7_user](src/assets/7_user.png)
+---
+
+- **Report**
+
+![8_pdf_report](src/assets/8_pdf_report.png)
 ---
 
 ## 🗺️ Roadmap
