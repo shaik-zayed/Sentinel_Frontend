@@ -435,32 +435,31 @@ Report generation
 
 ## 📸 Screenshots
 
-- **Login**
+- Login
 ![2_login](src/assets/2_login.png)
 ---
 
-- **Dashboard**
+- Dashboard
 ![3_dashboard](src/assets/3_dashboard.png)
 ---
 
-- **New Scan**
+- New Scan
 ![4_new_scan](src/assets/4_new_scan.png)
 ---
 
-- **Scan Results**
+- Scan Results
 ![5_raw_scan_output](src/assets/5_raw_scan_output.png)
 ---
 
-- **Reports Page**
+- Reports Page
 ![6_reports_page](src/assets/6_reports_page.png)
 ---
 
-- **User Profile**
+- User Profile
 ![7_user](src/assets/7_user.png)
 ---
 
-- **Report**
-
+- Report
 ![8_pdf_report](src/assets/8_pdf_report.png)
 ---
 
